@@ -6,13 +6,13 @@ pipeline{
     stages{
         stage("git clone"){
             steps{
-                sh "cloning the code from the gitrepo"
-                git branch: 'main', url: 'https://github.com/Immaculit-25/reg-app.git'
+                sh "echo cloning the code from the gitrepo"
+                git branch: 'main', credentialsId: 'github-cred', url: 'https://github.com/Immaculit-25/reg-app.git'
             }
         }
         stage("buildjar"){
             steps{
-                sh "testing and build with maven"
+                sh "echo testing and build with maven"
                 sh "mvn package"
             }
         }

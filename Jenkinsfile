@@ -28,6 +28,11 @@ pipeline{
             }
         }
         stage("deploy"){
+            when {
+                expression {
+                    BRANCH_NAME == 'main'
+                }
+            }
             steps{
                 sh "docker run -d --name appv1 -p 9000:8080 imaculit/new-reg-app:v1 "
             }

@@ -25,9 +25,9 @@
                 steps {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'PASSWD', usernameVariable: 'USER')]) 
                     {
-                     sh "docker build -t imaculit/new-reg-app:v1 ."
+                     sh "docker build -t imaculit/new-reg-app:v2 ."
                      sh "echo $PASSWD | docker login -u $USER --password-stdin"
-                     sh "docker push imaculit/new-reg-app:v1"
+                     sh "docker push imaculit/new-reg-app:v2"
                     }
                 }
             }
@@ -35,7 +35,7 @@
                 steps {
                     sh "echo deploying into prod envt"
                     sh "docker rm -f appv1"
-                    sh "docker run -d --name appv1 -p 9000:8080 imaculit/new-reg-app:v1"
+                    sh "docker run -d --name appv1 -p 9000:8080 imaculit/new-reg-app:v2"
                 }
             }
         }

@@ -11,6 +11,11 @@
                 }
             }
             stage('unit-test'){
+                when {
+                    expression {
+                        BRANCH_NAME == 'dev'
+                    }
+                }
                 steps {
                     sh "echo running a unit test"
                     sh "mvn test"
@@ -32,6 +37,11 @@
                 }
             }
             stage('deploy'){
+                when {
+                    expression {
+                        BRANCH_NAME == 'main'
+                    }
+                }
                 steps {
                     sh "echo deploying into prod envt"
                     sh "docker rm -f appv1"

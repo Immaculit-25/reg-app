@@ -18,7 +18,7 @@ pipeline {
                 // }
                 steps {
                     sh "echo running a unit test"
-                    sh "configure scm"
+                    sh "echo configure scm"
                     sh "mvn test"
                 }
             }

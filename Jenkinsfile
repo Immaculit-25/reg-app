@@ -43,7 +43,7 @@ pipeline {
                 //     }
                 // }
                 steps {
-                    sh "echo deploying into prod envt"
+                    sh "echo deploying into prod environments"
                     sh "docker rm -f appv1"
                     sh "docker run -d --name appv1 -p 9000:8080 imaculit/new-reg-app:v2"
                 }

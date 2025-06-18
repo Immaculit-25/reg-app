@@ -23,7 +23,7 @@ pipeline {
             }
             stage('build-art'){
                 steps {
-                    sh "echo building the artifact"
+                    sh "echo building the artifacts"
                     sh "mvn package"
                 }
             }
